@@ -7,7 +7,7 @@
 <body>
     <h1>Cadastrar Novo Contato</h1>
 
-    <form action="{{ url('\save') }}" method="POST">
+    <form action="{{ url('/save') }}" method="POST">
         @csrf <!-- Token de segurança no laravel p/ POST -->
 
         <label>Nome: </label><br>
@@ -25,5 +25,14 @@
         <button type="submit">Salvar Contato</button>
 
     </form>
+
+    <hr>
+
+    <h2>Contatos Salvos no Banco de Dados</h2>
+    <ul>
+        @foreach($contatos as $c)
+            <li><strong>{{$c->nome}}</strong> - {{$c->telefone}} | {{$c->email}} | {{$c->endereco}}</li>
+        @endforeach
+    </ul>
 </body>
 </html>
