@@ -33,5 +33,41 @@ class ContatoController extends Controller
 
         return redirect('/'); //redireciona a home
     }
+
+    //DELETE: remove o registro no banco de dados
+    public function delete($id)
+    {
+        //Busca o contato pelo id
+        $contato = Contato::find($id);
+
+        if($contato){
+            //Executa o comando de exclusão no banco
+            $contato->delete();
+        }
+
+        return redirect('/'); //retorna a home
+    }
+
+    public function edit($id)
+    {
+        //Busca o contato pelo id
+        $contato = Contato::find($id);
+
+        //Abre a view de edição com o registro buscado
+        return view('edit', ['contato' => $contato]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        //Busca o contato pelo id
+        $contato = Contato::find($id);
+        $contato->nome = $request->input('nome');
+        $contato->telefone = $request->input('telefone');
+        $contato->email = $request->input('email');
+        $contato->endereco = $request->input('endereco');
+        $contato->save();
+
+        return redirect('/');
+    }
     
 }

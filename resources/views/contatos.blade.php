@@ -43,7 +43,16 @@
                     <h5 class="card-title; align-text: center">Contatos salvos</h5>
                     <ul class="list-group list-group-flush">
                         @foreach($contatos as $c)
-                        <li class="list-group-item"><strong>{{$c->nome}}</strong> - {{$c->telefone}} | {{$c->email}} | {{$c->endereco}}</li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong>{{$c->nome}}</strong> - {{$c->telefone}} | {{$c->email}} | {{$c->endereco}}
+                            </div>
+                            <form action="{{url('/delete/' . $c->id)}}" method="POST" style="margin: 0">
+                                @csrf
+                                @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+                            </form>
+                        </li>
                         @endforeach
                     </ul>
                 </div>
