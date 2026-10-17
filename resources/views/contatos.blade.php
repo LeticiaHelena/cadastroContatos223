@@ -47,10 +47,13 @@
                             <div>
                                 <strong>{{$c->nome}}</strong> - {{$c->telefone}} | {{$c->email}} | {{$c->endereco}}
                             </div>
-                            <form action="{{url('/delete/' . $c->id)}}" method="POST" style="margin: 0">
+                            <form action="{{url('/edit/' . $c->id)}}" style="margin: 0; margin-left: auto">
+                                <button class="btn btn-secondary btn-sm">Editar</button>
+                            </form>
+                            <form action="{{url('/delete/' . $c->id)}}" method="POST" style="margin: 0; margin-right: 10px; margin-left: 10px">
                                 @csrf
                                 @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+                                <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
                             </form>
                         </li>
                         @endforeach

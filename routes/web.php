@@ -22,7 +22,7 @@ Route::post('/save', [ContatoController::class, 'form']);
 Route::delete('/delete/{id}', [ContatoController::class, 'delete']);
 
 //Traz os dados do id que será alterado
-Route::get('/editar/{id}', [ContatoController::class, 'edit']);
+Route::get('/edit/{id}', [ContatoController::class, 'edit']);
 
 //Rota PUT recebe os dados alterados e atualiza no banco
 Route::put('/update/{id}', [ContatoController::class, 'update']);
